@@ -11,7 +11,6 @@ int build_tree(vector<int> &tree, int i){ // O(n)
 int min_query(vector<int> &tree, vector<int> &lazy_tree, int i, int li, int ri, int l, int r){ // O(log(n))
   // Handle Lazy updations
   if(lazy_tree[i] > 0){
-    cout << i << endl;
     tree[i] += lazy_tree[i];
     lazy_tree[2*i] += lazy_tree[i];
     lazy_tree[2*i+1] += lazy_tree[i];
