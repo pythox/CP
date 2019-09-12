@@ -1,4 +1,4 @@
-// Union-Find Desjoint Set by MEET DADHANIA
+// Union-Find Desjoint Set
 #include<bits/stdc++.h>
 using namespace std;
 int Find(int i, vector<int> &set){

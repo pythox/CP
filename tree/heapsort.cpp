@@ -1,4 +1,4 @@
-/* HEAPSORT by MEET DADHANIA */
+// HEAPSORT
 #include<bits/stdc++.h>
 using namespace std;
 void heapify(vector<int> &arr, int n, int i){

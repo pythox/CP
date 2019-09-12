@@ -1,4 +1,4 @@
-// Segment tree with LP by MEET DADHANIA
+// Segment tree with LP
 #include<bits/stdc++.h>
 using namespace std;
 int build_tree(vector<int> &tree, int i){ // O(n)

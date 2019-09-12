@@ -1,4 +1,4 @@
-// LCA Using binary lifting by MEET DADHANIA
+// LCA Using binary lifting
 #include<bits/stdc++.h>
 using namespace std;
 // Preprocess using BFS O(n)
