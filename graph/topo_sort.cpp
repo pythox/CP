@@ -2,8 +2,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 void util(int ind, vector<bool> &visited, vector<vector<pair<int, int>>> &graph, stack<int> &s){
+  visited[ind] = true;
   for(unsigned int i=0 ; i<graph[ind].size() ; i++)
-    if(!visited[graph[ind][i].second])
+    if(!visited[graph[ind][i].first])
       util(graph[ind][i].first, visited, graph, s);
   s.push(ind);
 }
