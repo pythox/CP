@@ -23,7 +23,7 @@ void dfs_util(int u, int time, vi &disc, vi &low, vi &parent, vi &ap, vi &visite
       if(parent[u] != INT_MIN && low[v] >= disc[u])
         ap[u] = 1;
     }
-    else
+    else if(v != parent[u])
       low[u] = min(low[u], disc[v]);
   }
 }

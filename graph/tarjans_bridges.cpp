@@ -1,0 +1,51 @@
+// Tarjans Algorithm for finding bridges in a graph
+// Conditions : IF ROOT THEN ATLEAST 2 CHILDREN
+//              ELSE NO BACKEDGE
+#include<bits/stdc++.h>
+using namespace std;
+typedef vector<int> vi;
+typedef vector<vi> vvi; 
+
+void dfs_util(int u, int time, vi &disc, vi &low, vi &parent, vi &visited, vvi &graph, vector<pair<int, int>> &bridge){
+  disc[u] = time;
+  low[u] = time;
+  visited[u] = 1;
+  int children = 0;
+  for(unsigned int i=0 ; i<graph[u].size() ; i++){
+    int v = graph[u][i];
+    if(visited[v]==0){
+      children++;
+      parent[v] = u;
+      dfs_util(v, ++time, disc, low, parent, visited, graph, bridge);
+      low[u] = min(low[u], low[v]);
+      if(low[v] > disc[u])
+        bridge.push_back(make_pair(u, v));
+    }
+    else if(v != parent[u])
+      low[u] = min(low[u], disc[v]);
+  }
+}
+
+void articulation_points(int n, vector<vector<int>> &graph){
+  vi parent(n, INT_MIN), low(n, INT_MAX), disc(n, INT_MAX), visited(n, 0);
+  vector<pair<int, int>> bridge;
+  for(int i=0 ; i<n ; i++)
+    if(visited[i] == 0)
+      dfs_util(i, 0, disc, low, parent, visited, graph, bridge);
+  for(unsigned  int i=0 ; i<bridge.size() ; i++)
+    cout << bridge[i].first << " " << bridge[i].second << endl;
+}
+
+int main(){
+  int n,e;
+  cin >> n >> e;
+  vvi graph(n);
+  for(int i=0 ; i<e ; i++){
+    int v1, v2;
+    cin >> v1 >> v2;
+    graph[v1].push_back(v2);
+    graph[v2].push_back(v1); // Undirected Graph
+  }
+  articulation_points(n, graph);
+  return 0;
+}
