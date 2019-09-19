@@ -14,8 +14,8 @@ void dfs(int ind, int n, int pred, vector<vector<pair<int, int>>> &graph, vector
  visited[ind] = true;
  for(unsigned int i=0 ; i<graph[i].size() ; i++){
    if(!visited[graph[ind][i].first]){
-     scc[graph[ind][i].first] = ind;
-     dfs(graph[ind][i].first, n, pred, graph, scc, visited);
+    scc[graph[ind][i].first] = ind;
+    dfs(graph[ind][i].first, n, pred, graph, scc, visited);
    }
  }
 }
